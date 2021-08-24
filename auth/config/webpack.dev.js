@@ -8,11 +8,12 @@ const dev = {
   mode: 'development',
   devServer: {
     // open: true,
-    port: 8080,
+    port: 8081,
     historyApiFallback: true
   },
   plugins: [
     new HtmlPlugin({
+      title: 'Auth',
       template: './public/index.html'
     })
   ]

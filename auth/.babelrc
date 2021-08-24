@@ -3,6 +3,5 @@
     "@babel/env",
     "@babel/typescript"
   ],
-  "plugins": [
-  ]
+  "plugins": []
 }

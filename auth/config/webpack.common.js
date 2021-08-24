@@ -1,7 +1,6 @@
 const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin')
-// const pk = require('../package.json')
 
 module.exports = {
   entry: './src/bootstrap.ts',
@@ -20,6 +19,7 @@ module.exports = {
         test: /\.ts$/,
         exclude: /node_modules/,
         use: 'babel-loader'
+
       },
       {
         test: /\.vue$/,
@@ -35,10 +35,10 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'container',
-      // remoteType: 'var',
-      remotes: {
-        auth: 'auth@http://localhost:8081/remoteEntry.js'
+      name: 'auth',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './Main': './src/index'
       },
       shared: {
         vue: { singleton: true },
