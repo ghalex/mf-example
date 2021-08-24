@@ -3,8 +3,6 @@
 </template>
 
 <script lang="ts">
-/// <reference path="../types/index.d.ts" />
-
 import { defineComponent, ref, onMounted } from 'vue'
 import { mount } from 'auth/Main'
 import { useRouter } from 'vue-router'
@@ -16,11 +14,23 @@ export default defineComponent({
     const router = useRouter()
 
     onMounted(() => {
-      const { onParentNavigate } = mount(el.value, { initialPath: router.currentRoute.value.path })
+      if (el.value) {
+        const { onParentNavigate } = mount(
+          el.value,
+          {
+            initialPath: router.currentRoute.value.path,
+            onChildNavigate: (to, from) => {
+              if (to.path !== from.path) {
+                router.push(to.path)
+              }
+            }
+          }
+        )
 
-      router.afterEach((to, from) => {
-        onParentNavigate(to, from)
-      })
+        router.afterEach((to, from) => {
+          onParentNavigate(to, from)
+        })
+      }
     })
     return { el }
   }

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container-app">
     <router-view />
   </div>
 </template>
@@ -8,6 +8,7 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
+  name: 'ContainerApp'
 
 })
 </script>

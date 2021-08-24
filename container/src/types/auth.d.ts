@@ -1,13 +1,15 @@
 declare module 'auth/Main' {
   interface Options {
     history?: any
+    initialPath: string
+    onChildNavigate: (to, from) => void
   }
 
   interface MountReturn {
-    onParentNavigate: () => void
+    onParentNavigate: (to, from) => void
   }
 
-  const mount: (el: Element, options: Options) => MountReturn
+  const mount: (el: any, options: Options) => MountReturn
 
   export {
     mount

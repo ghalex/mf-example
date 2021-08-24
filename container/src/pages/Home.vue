@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="home-page">
     <div class="flex">
       <div>Go To Login:</div>
       <button @click="onClick">Click me</button>
