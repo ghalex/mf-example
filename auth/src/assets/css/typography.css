@@ -1,0 +1,14 @@
+.auth-app {
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 2.0rem;
+  }
+
+  a {
+    color: var(--primary-color);
+  }
+}

@@ -1,4 +1,28 @@
+.auth-app {
+  .layout {
+    @apply flex flex-row items-stretch;
+    min-height: 100vh;
+  
+  }
+  
+  .layout-full {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    background: #edf2f6;
+  }
 
-.layout {
-  border: 1px solid red;
+  .panel {
+    display: flex;
+    background-color: white;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 10%), 0 1px 2px 0 rgb(0 0 0 / 6%);
+  }
 }

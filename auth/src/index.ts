@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import { createMemoryHistory, createRouter, createWebHistory, RouterHistory } from 'vue-router'
+import Vue3Foundation from 'vue3-foundation'
 import App from '@/components/App.vue'
 import routes from '@/routes'
 
@@ -13,13 +14,16 @@ const mount = (el: Element, options: any) => {
     routes
   })
 
-  // router.afterEach((to, from) => {
-  //   console.log('listen', to)
-  // })
+  router.afterEach((to, from) => {
+    if (options.onChildNavigate) {
+      options.onChildNavigate(to, from)
+    }
+  })
 
   const app = createApp(App)
 
   app.use(router)
+  app.use(Vue3Foundation)
   app.mount(el)
 
   if (options.initialPath) {
@@ -30,7 +34,6 @@ const mount = (el: Element, options: any) => {
     onParentNavigate: (to, from) => {
       if (from.path !== to.path) {
         router.push(to.path)
-        console.log('change path')
       }
     }
   }

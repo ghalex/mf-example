@@ -1,5 +1,5 @@
 <template>
-  <button class="btn"><slot>Click me</slot></button>
+  <button class="btn">Container button</button>
 </template>
 
 <script>

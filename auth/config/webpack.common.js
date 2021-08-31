@@ -2,9 +2,12 @@ const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin')
 
+const rootFolder = path.resolve(__dirname, '..')
+
 module.exports = {
   entry: './src/bootstrap.ts',
   output: {
+    publicPath: 'http://localhost:8081/',
     filename: '[name].[contenthash].js'
   },
   resolve: {
@@ -30,6 +33,10 @@ module.exports = {
       {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader', 'postcss-loader']
+      },
+      {
+        test: /\.(png|jpe?g|gif|woff|svg|eot|ttf)$/i,
+        use: [{ loader: 'file-loader' }]
       }
     ]
   },
@@ -40,10 +47,11 @@ module.exports = {
       exposes: {
         './Main': './src/index'
       },
-      shared: {
-        vue: { singleton: true },
-        'vue-router': { singleton: true }
-      }
+      shared: require(rootFolder + '/package.json').dependencies
+      // shared: {
+      //   vue: { singleton: true, eager: true },
+      //   'vue-router': { singleton: true }
+      // }
     }),
     new VueLoaderPlugin()
   ]

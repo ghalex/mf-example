@@ -1,5 +1,10 @@
+@import 'tailwind.css';
 @import 'layout.css';
+@import 'typography.css';
+@import 'vue3-foundation/themes/main/index.css';
 
-body {
-  background-color: #FFF;
+:root {
+  --primary-color: #db2877;
 }
+
+@tailwind utilities;

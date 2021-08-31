@@ -2,15 +2,17 @@
   <div class="home-page">
     <div class="flex">
       <div>Go To Login:</div>
-      <button @click="onClick">Click me</button>
+      <Button @click="onClick">Click me</Button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { useRouter } from 'vue-router'
+import { Button } from '@/components'
 
 export default {
+  components: { Button },
   setup () {
     const router = useRouter()
     function onClick () {

@@ -1,7 +1,7 @@
 const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin')
-// const pk = require('../package.json')
+const rootFolder = path.resolve(__dirname, '..')
 
 module.exports = {
   entry: './src/bootstrap.ts',
@@ -40,10 +40,11 @@ module.exports = {
       remotes: {
         auth: 'auth@http://localhost:8081/remoteEntry.js'
       },
-      shared: {
-        vue: { singleton: true },
-        'vue-router': { singleton: true }
-      }
+      shared: require(rootFolder + '/package.json').dependencies
+      // shared: {
+      //   vue: { singleton: true },
+      //   'vue-router': { singleton: true }
+      // }
     }),
     new VueLoaderPlugin()
   ]
