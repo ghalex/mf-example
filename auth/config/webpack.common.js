@@ -1,4 +1,8 @@
+require('dotenv').config({ path: './.env' })
+
 const path = require('path')
+const webpack = require('webpack')
+
 const { VueLoaderPlugin } = require('vue-loader')
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin')
 
@@ -53,6 +57,9 @@ module.exports = {
       //   'vue-router': { singleton: true }
       // }
     }),
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify(process.env)
+    })
   ]
 }

@@ -4,7 +4,9 @@
 @import 'vue3-foundation/themes/main/index.css';
 
 :root {
-  --primary-color: #db2877;
 }
 
-@tailwind utilities;
+.bg-panel {
+  background-image: url('@/assets/images/tra-bg-2.png');
+  background-repeat: no-repeat;
+}

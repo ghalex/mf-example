@@ -1,5 +1,5 @@
 {
-  "name": "container",
+  "name": "@zapant-frontend/container",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",

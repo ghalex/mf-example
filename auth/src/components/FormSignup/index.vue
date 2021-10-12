@@ -1,58 +1,41 @@
 <template>
   <form class="w-full" @submit.prevent="handleSubmit">
-    <!-- <div class="flex flex-col sm:flex-row">
-      <div class="mb-4 flex-1">
-        <label class="text-gray-700 ml-2">Company Name *</label>
-        <v-input
-          v-model="companyName"
-          class="primary w-full"
-          type="text"
-          placeholder="Name: ex. Empire"
-        />
-      </div>
-    </div>
-    <div class="mb-4">
-      <label class="text-gray-700 ml-2">Company Type *</label>
-      <select class="w-full v-select primary" v-model="companyType">
-        <option value="">Select type</option>
-        <option value="agency">Agency</option>
-        <option value="alt">Alt tip</option>
-      </select>
-    </div> -->
     <div class="mb-4">
       <label class="text-gray-700 ml-2">Name *</label>
-      <v-input v-model="name" class="primary w-full" type="text" placeholder="Name: ex. Yoda" />
+      <v-input v-model="formData.name" class="primary w-full" type="text" placeholder="Name: ex. Yoda" />
     </div>
     <div class="mb-4">
       <label class="text-gray-700 ml-2">Email *</label>
       <v-input
-        v-model="email"
+        v-model="formData.email"
         class="primary w-full"
         type="text"
         placeholder="Email: ex. yoda@gmail.com"
       />
     </div>
-    <div class="mb-4">
-      <label class="text-gray-700 ml-2">Password *</label>
-      <v-input
-        v-model="password"
-        class="primary w-full"
-        type="password"
-        placeholder="Don't use 1234 :)"
-      />
-    </div>
-    <div class="mb-4">
-      <label class="text-gray-700 ml-2">Confirm Password *</label>
-      <v-input
-        v-model="passwordConfirmation"
-        class="primary w-full"
-        type="password"
-        placeholder="Same as password"
-      />
+    <div class="flex items-stretch">
+      <div class="mb-4 mr-4 flex-1">
+        <label class="text-gray-700 ml-2">Password *</label>
+        <v-input
+          v-model="formData.password"
+          class="primary w-full"
+          type="password"
+          placeholder="Don't use 1234 :)"
+        />
+      </div>
+      <div class="mb-4 flex-1">
+        <label class="text-gray-700 ml-2">Confirm Password *</label>
+        <v-input
+          v-model="formData.passwordConfirmation"
+          class="primary w-full"
+          type="password"
+          placeholder="Same as password"
+        />
+      </div>
     </div>
     <label class="flex items-center mb-2">
-      <v-checkbox class="primary mr-4" v-model="agreeTerms">
-        <div class="w-full">
+      <v-checkbox class="primary mr-4" v-model="formData.agreeTerms">
+        <div class="w-full ml-1">
           I agree to the TesaHRa
           <a href="#" target="_blank">terms conditions</a>
           and
@@ -78,8 +61,6 @@ export default defineComponent({
   },
   setup (_, { emit }) {
     const formData = ref({
-      companyName: '',
-      companyType: '',
       name: '',
       email: '',
       password: '',
@@ -95,10 +76,10 @@ export default defineComponent({
 
     const valid = computed(() => {
       return (
-        formData.value.companyName.length > 3 &&
         formData.value.agreeTerms &&
-        validEmail.value &&
-        formData.value.password.length > 3
+        formData.value.name.length > 3 &&
+        formData.value.password.length > 3 &&
+        validEmail.value
       )
     })
 

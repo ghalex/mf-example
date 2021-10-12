@@ -1,0 +1,7 @@
+@import 'tailwind.css';
+@import 'layout.css';
+@import 'typography.css';
+@import 'vue3-foundation/themes/main/index.css';
+
+:root {
+}

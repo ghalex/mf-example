@@ -1,5 +1,15 @@
 .auth-app {
 
+  h1,
+  h2,
+  h3,
+  a,
+  p {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
   h1 {
     font-size: 2.5rem;
   }
@@ -8,7 +18,12 @@
     font-size: 2.0rem;
   }
 
+  h3 {
+    font-size: 1.5rem;
+  }
+
   a {
     color: var(--primary-color);
+    text-decoration: underline;
   }
 }

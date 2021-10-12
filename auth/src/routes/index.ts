@@ -6,9 +6,10 @@ const routes: Array<RouteRecordRaw> = [{
   name: 'login',
   component: LoginPage
 }, {
-  path: '/signup',
-  name: 'signup',
-  component: SignupPage
+  path: '/signup/:step',
+  name: 'signupp',
+  component: SignupPage,
+  props: true
 }]
 
 export default routes
